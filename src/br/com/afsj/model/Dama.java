@@ -1,10 +1,12 @@
 package br.com.afsj.model;
+import br.com.afsj.control.Xadrez;
 
-public class Rainha extends Peca {
+public class Dama extends Peca {
+
 	@Override
 	public boolean movimentoOK(int x, int y) {
 		
-	if (posX == -1 && posY == -1) {
+		if (posX == -1 && posY == -1) {
             return true;
         }
         
@@ -23,10 +25,12 @@ public class Rainha extends Peca {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(x, j);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(x, j);
                 if (pBranca != null || pPreta != null) {
+                	//System.out.printf("Falsa em y");
                     return false; 
                 }
                 j += pY;
             }
+            return true;
         }
         
         if(y == posY) {
@@ -41,10 +45,12 @@ public class Rainha extends Peca {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(i, y);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(i, y);
                 if (pBranca != null || pPreta != null) {
+                	//System.out.printf("Falsa em x");
                     return false; 
                 }
                 i += pX;
             }
+            return true;
         }
         
         if (variaX == variaY) {           
@@ -68,6 +74,7 @@ public class Rainha extends Peca {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(i, j);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(i, j);
                 if (pBranca != null || pPreta != null) {
+                	//System.out.printf("Falsa em diagonal");
                     return false; 
                 }
                 i += pX;
@@ -77,5 +84,4 @@ public class Rainha extends Peca {
         }
         return false;
     }
-
 }

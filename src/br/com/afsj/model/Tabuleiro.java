@@ -3,7 +3,9 @@ package br.com.afsj.model;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import br.com.afsj.control.Xadrez;
+import br.com.afsj.view.IBispo;
 import br.com.afsj.view.ICavalo;
+import br.com.afsj.view.IDama;
 import br.com.afsj.view.IPeao;
 import br.com.afsj.view.IPeca;
 import br.com.afsj.view.ITabuleiro;
@@ -36,12 +38,23 @@ public class Tabuleiro {
 	protected static Cavalo cavaloBranco1 = new Cavalo();
 	protected static ICavalo iCavaloBranco1 = new ICavalo(cavaloBranco1);
 	
-	protected static Rainha rainhaBranca = new Rainha();
-	protected static IRainha iRainhaBranca = new IRainha (rainhaBranca);
-
-	protected static Rainha rainhaPreta = new Rainha();
-	protected static IRainha iRainhaPreta = new IRainha(rainhaPreta);
-
+	protected static Dama damaBranca = new Dama();
+	protected static IDama idamaBranca = new IDama(damaBranca);
+	
+	protected static Dama damaPreta = new Dama();
+	protected static IDama idamaPreta = new IDama(damaPreta);
+	
+	protected static Bispo bispoBranco1 = new Bispo();
+	protected static IBispo iBispoBranco1 = new IBispo(bispoBranco1);
+	
+	protected static Bispo bispoBranco2 = new Bispo();
+	protected static IBispo iBispoBranco2 = new IBispo(bispoBranco2);
+	
+	protected static Bispo bispoPreto1 = new Bispo();
+	protected static IBispo iBispoPreto1 = new IBispo(bispoPreto1);
+	
+	protected static Bispo bispoPreto2 = new Bispo();
+	protected static IBispo iBispoPreto2 = new IBispo(bispoPreto2);
 	//protected static Peca peca = new Peca();
 
 	public void iniciar(Tradutor t) {
@@ -57,6 +70,14 @@ public class Tabuleiro {
 		TELA.getContentPane().add(iPeaoBranco1.getImagem());
 		listaBrancas.add(peaoBranco1);
 
+		damaBranca.setCor(Xadrez.corBRANCA);
+		damaBranca.mover(3, 7);
+		idamaBranca.setIconeBranco(new ImageIcon("imagens/Rainha-Brancas-Branco.png"));
+		idamaBranca.setIconeMarrom(new ImageIcon("imagens/Rainha-Brancas-Marrom.png"));
+		idamaBranca.mover(3, 7);
+		TELA.getContentPane().add(idamaBranca.getImagem());
+		listaBrancas.add(damaBranca);
+		
 		peaoBranco2.setCor(Xadrez.corBRANCA);
 		peaoBranco2.mover(1, 6);
 		iPeaoBranco2.setIconeBranco(new ImageIcon("imagens/Peao-Brancas-Branco.png"));
@@ -73,14 +94,22 @@ public class Tabuleiro {
 		TELA.getContentPane().add(iCavaloBranco1.getImagem());
 		listaBrancas.add(cavaloBranco1);
 		
-		rainhaBranca.setCor(Xadrez.corBRANCA);
-		rainhaBranca.mover(4, 7);
-		iRainhaBranca.setIconeBranco(new ImageIcon("imagens/Raiha-Brancas-Branco.png"));
-		iRainhaBranca.setIconeMarrom(new ImageIcon("imagens/Rainha-Brancas-Marrom.png"));
-		iRainhaBranca.mover(4, 7);
-		TELA.getContentPane().add(iRainhaBranca.getImagem());
-		listaBrancas.add(rainhaBranca);
-
+		bispoBranco1.setCor(Xadrez.corBRANCA);
+		bispoBranco1.mover(2, 7);
+		iBispoBranco1.setIconeBranco(new ImageIcon("imagens/Bispo-Brancas-Branco.png"));
+	    iBispoBranco1.setIconeMarrom(new ImageIcon("imagens/Bispo-Brancas-Marrom.png"));
+		iBispoBranco1.mover(2, 7);
+		TELA.getContentPane().add(iBispoBranco1.getImagem());
+		listaBrancas.add(bispoBranco1);
+		
+		bispoBranco2.setCor(Xadrez.corBRANCA);
+		bispoBranco2.mover(5, 7);
+		iBispoBranco2.setIconeBranco(new ImageIcon("imagens/Bispo-Brancas-Branco.png"));
+		iBispoBranco2.setIconeMarrom(new ImageIcon("imagens/Bispo-Brancas-Marrom.png"));
+		iBispoBranco2.mover(5, 7);
+		TELA.getContentPane().add(iBispoBranco2.getImagem());
+		listaBrancas.add(bispoBranco2);
+		
 		// Pretas
 		peaoPreto1.setCor(Xadrez.corPRETA);
 		peaoPreto1.mover(0, 1);
@@ -90,6 +119,14 @@ public class Tabuleiro {
 		TELA.getContentPane().add(iPeaoPreto1.getImagem());
 		listaPretas.add(peaoPreto1);
 
+		damaPreta.setCor(Xadrez.corPRETA);
+		damaPreta.mover(3, 0);
+		idamaPreta.setIconeBranco(new ImageIcon("imagens/Rainha-Pretas-Branco.png"));
+		idamaPreta.setIconeMarrom(new ImageIcon("imagens/Rainha-Pretas-Marrom.png"));
+		idamaPreta.mover(3, 0);
+		TELA.getContentPane().add(idamaPreta.getImagem());
+		listaBrancas.add(damaPreta);
+		
 		cavaloPreto1.setCor(Xadrez.corPRETA);
 		cavaloPreto1.mover(1, 0);
 		iCavaloPreto1.setIconeBranco(new ImageIcon("imagens/Cavalo-Pretas-Branco.png"));
@@ -97,21 +134,33 @@ public class Tabuleiro {
 		iCavaloPreto1.mover(1, 0);
 		TELA.getContentPane().add(iCavaloPreto1.getImagem());
 		listaPretas.add(cavaloPreto1);
-
-		rainhaPreta.setCor(Xadrez.corPRETA);
-		rainhaPreta.mover(4, 0);
-		iRainhaPreta.setIconeBranco(new ImageIcon("imagens/Rainha-Pretas-Branco.png"));
-		iRainhaPreta.setIconeMarrom(new ImageIcon("imagens/Rainha-Pretas-Marrom.png"));
-		iRainhaPreta.mover(4, 0);
-		TELA.getContentPane().add(iRainhaPreta.getImagem());
-		listaPretas.add(rainhaPreta);
 		
 		TELA.getContentPane().add(iTabuleiro.getImagem());
 		TELA.setSize(400, 400);
 		TELA.setVisible(true);
 		TELA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		bispoPreto1.setCor(Xadrez.corPRETA);
+		bispoPreto1.mover(2, 0);
+		iBispoPreto1.setIconeBranco(new ImageIcon("imagens/Bispo-Pretas-Branco.png"));
+		iBispoPreto1.setIconeMarrom(new ImageIcon("imagens/Bispo-Pretas-Marrom.png"));
+		iBispoPreto1.mover(2, 0);
+		TELA.getContentPane().add(iBispoPreto1.getImagem());
+		listaPretas.add(bispoPreto1);
+		
+		bispoPreto2.setCor(Xadrez.corPRETA);
+		bispoPreto2.mover(5, 0);
+		iBispoPreto2.setIconeBranco(new ImageIcon("imagens/Bispo-Pretas-Branco.png"));
+		iBispoPreto2.setIconeMarrom(new ImageIcon("imagens/Bispo-Pretas-Marrom.png"));
+		iBispoPreto2.mover(5, 0);
+		TELA.getContentPane().add(iBispoPreto2.getImagem());
+		listaPretas.add(bispoPreto2);
+		
 	}
+	
+	
 
+	
 	public static void avaliarEventoPeca(Peca p, IPeca ip) {
 		if (p.getCor() == corJogadorAtual) 
 			marcarPeca(p, ip);
@@ -161,4 +210,5 @@ public class Tabuleiro {
 				corJogadorAtual = Xadrez.corBRANCA;
 		}
 	}
+	
 }

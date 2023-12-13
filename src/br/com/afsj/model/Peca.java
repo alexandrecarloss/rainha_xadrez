@@ -7,7 +7,7 @@ public abstract class Peca {
 	protected int posX = -1;
 	protected int posY = -1;
 	
-	// Métodos
+	// Mï¿½todos
 	public int getCor() {
 		return cor;
 	}
@@ -32,7 +32,17 @@ public abstract class Peca {
 		}
 		return false;
 	}
+	
 	public abstract boolean movimentoOK(int x, int y);
+	
+	public boolean lugar(int x, int y) {
+		if (posX==x && posY==y) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	
 	public void remover() {
 		this.posX = -1;
