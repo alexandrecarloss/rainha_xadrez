@@ -1,1 +1,35 @@
-package br.com.afsj.view;import java.awt.Color;import java.awt.Graphics;import javax.swing.JPanel;import br.com.afsj.control.Xadrez;public class MarcadorAzul extends JPanel {		private static final long serialVersionUID = 1L;	int posXTela;	int posYTela;		public void paintComponent(Graphics g) {		g.setColor(Color.BLUE);		g.drawRect(posXTela, posYTela, Xadrez.tamanhoQuadrado, Xadrez.tamanhoQuadrado);	}		public MarcadorAzul(int x, int y) {		this.posXTela = x;		this.posYTela = y;	}}
+package br.com.afsj.view;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
+import br.com.afsj.control.Xadrez;
+
+public class MarcadorAzul{
+	protected Icon icone;
+	protected JLabel imagem;
+	
+	public MarcadorAzul() {
+		this.imagem = new JLabel();
+		this.imagem.setHorizontalAlignment(JLabel.LEFT);
+		this.imagem.setVerticalAlignment(JLabel.TOP);
+	}
+	
+	public void mover(int posX, int posY) {
+		int posXTela = Xadrez.tamanhoQuadrado * posX;
+		int posYTela = Xadrez.tamanhoQuadrado * posY;
+		
+		imagem.setIcon(icone);
+		imagem.setBounds(posXTela, posYTela, Xadrez.tamanhoQuadrado, Xadrez.tamanhoQuadrado);
+		//contagem de movimento
+		//System.out.println(p.getNome()+" movimentou "+p.getMoveCont());
+	}
+	
+	public void setIcone(Icon i) {
+		this.icone = i;
+	}
+	
+	public JLabel getImagem() {
+		return this.imagem;
+	}
+}

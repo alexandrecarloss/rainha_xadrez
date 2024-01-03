@@ -6,6 +6,7 @@ public abstract class Peca {
 	protected int cor;
 	protected int posX = -1;
 	protected int posY = -1;
+	protected int moveCont = 0;
 	
 	// M�todos
 	public int getCor() {
@@ -20,6 +21,12 @@ public abstract class Peca {
 	public int getPosY() {
 		return posY;
 	}
+	public int getMoveCont() {
+		return moveCont;
+	}
+	public void setMoveCont(int moveCont) {
+		this.moveCont = moveCont;
+	}
 	public String getNome(){
 		return this.getClass().getName();
 	}
@@ -32,23 +39,26 @@ public abstract class Peca {
 		}
 		return false;
 	}
-	
 	public abstract boolean movimentoOK(int x, int y);
 	
-	public boolean lugar(int x, int y) {
-		if (posX==x && posY==y) {
+	public boolean capturarOK(int x, int y)
+	{
+		// Verifica se a peça pode capturar o que houver na casa
+		if ( this.movimentoOK(x,y) ) {
 			return true;
-		}else {
-			return false;
 		}
+		return false;
 	}
 	
-	
 	public void remover() {
-		this.posX = -1;
-		this.posY = -1;
+		this.posX = -2;
+		this.posY = -2;
 	}
 	public boolean capturar(int x, int y) {
 		return mover(x,y);
+	}
+	public void moverIrrestrito(int x, int y) {
+		posX = x;
+		posY = y;
 	}
 }
