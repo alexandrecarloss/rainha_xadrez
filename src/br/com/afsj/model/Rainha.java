@@ -1,5 +1,4 @@
 package br.com.afsj.model;
-import br.com.afsj.control.Xadrez;
 
 public class Rainha extends Peca {
 
@@ -20,7 +19,7 @@ public class Rainha extends Peca {
                 pY = -1;
             }            
             int j = posY + pY;
-            //Verificando se existe alguma peça no caminho
+            //Verificando se existe alguma peça no caminho vertical
             while (j != y) {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(x, j);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(x, j);
@@ -40,12 +39,12 @@ public class Rainha extends Peca {
                 pX = -1;
             }
             int i = posX + pX;
-            //Verificando se existe alguma peça no caminho
+            //Verificando se existe alguma peça no caminho horizontal
             while (i != x) {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(i, y);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(i, y);
                 if (pBranca != null || pPreta != null) {
-                	//System.out.printf("Falsa em x");
+                	//System.out.printf("Falsa em x" + i);
                     return false; 
                 }
                 i += pX;
@@ -69,7 +68,7 @@ public class Rainha extends Peca {
             int i = posX + pX;
             int j = posY + pY;
             
-            //Verificando se existe alguma peça no caminho
+            //Verificando se existe alguma peça no caminho diagonal
             while (i != x && j != y) {
                 Peca pBranca = Tabuleiro.listaBrancas.pecaPosicao(i, j);
                 Peca pPreta = Tabuleiro.listaPretas.pecaPosicao(i, j);
